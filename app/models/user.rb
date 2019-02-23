@@ -13,11 +13,6 @@ class User < ApplicationRecord
     self.works.find_or_create_by(project_id: project.id)
   end
   
-  def withdraw_from_project(project)
-    work = self.works.find_by(project_id: project.id)
-    work.destroy if work
-  end
-  
   def is_member?(project)
     self.projects.include?(project)
   end

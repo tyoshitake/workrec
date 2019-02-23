@@ -1,0 +1,17 @@
+<% works.each do |work| %>
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <%= link_to work.project.name, project_path(work.get_project), class: "h4" %>
+  </div>
+  <div class="panel-body">
+    <%= form_for(work, html: {method: :delete }) do |f| %>
+      <%= hidden_field_tag :user_id, work.user_id %>
+      <%= hidden_field_tag :project_id, work.project_id %>
+      <%= f.submit 'Leave', class: 'btn btn-danger' %>
+    <% end %>
+    
+    
+  </div>
+  
+  
+<% end %>

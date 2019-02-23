@@ -1,2 +1,11 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<div class="text-center">
+  <h1><%= @user.name%> さんのページ</h1>
+</div>
+<div class="row">
+  <h2>プロジェクト一覧</h2>
+  <aside class="col-xs-4">
+    <%= render 'projects', works: @works %>
+  </aside>
+  <div class="col-xs-8">
+  </div>
+</div>
