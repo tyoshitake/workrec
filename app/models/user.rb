@@ -6,4 +6,19 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
+  has_many :works
+  has_many :projects, through: :works, source: :project
+  
+  def join_to_project(project)
+    self.works.find_or_create_by(project_id: project.id)
+  end
+  
+  def withdraw_from_project(project)
+    work = self.works.find_by(project_id: project.id)
+    work.destroy if work
+  end
+  
+  def is_member?(project)
+    self.projects.include?(project)
+  end
 end
