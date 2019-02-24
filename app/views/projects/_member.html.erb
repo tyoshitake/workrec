@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each_with_index do |member, index| %>
+      <tr>
+        <th><%= index %></th>
+        <th><%= member.name %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
