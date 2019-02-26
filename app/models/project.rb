@@ -8,4 +8,8 @@ class Project < ApplicationRecord
   def get_members
     @members = self.members.order(:id)
   end
+  
+  def join(user)
+    user.works.find_or_create_by(project_id: self.id)
+  end
 end

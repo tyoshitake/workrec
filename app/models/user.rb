@@ -9,10 +9,6 @@ class User < ApplicationRecord
   has_many :works
   has_many :projects, through: :works, source: :project
   
-  def join_to_project(project)
-    self.works.find_or_create_by(project_id: project.id)
-  end
-  
   def is_member?(project)
     self.projects.include?(project)
   end
