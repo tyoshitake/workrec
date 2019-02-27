@@ -8,6 +8,7 @@ class User < ApplicationRecord
   
   has_many :works
   has_many :projects, through: :works, source: :project
+  has_many :workingtimes
   
   def is_member?(project)
     self.projects.include?(project)
