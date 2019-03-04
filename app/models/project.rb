@@ -13,4 +13,9 @@ class Project < ApplicationRecord
   def join(user)
     user.works.find_or_create_by(project_id: self.id)
   end
+  
+  def leave(user)
+    work = user.works.find_by(project_id: self.id)
+    work.destroy if work
+  end
 end

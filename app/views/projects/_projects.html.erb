@@ -1,18 +1,38 @@
 <h1>プロジェクト一覧</h1>
 <% if projects.any? %>
-  <% projects.each do |project| %>
-    <div class="row col-md-8">
-      <div class="panel panel-info">
-      	<div class="panel-heading">
-      	  <%= link_to project.name, project_path(project) %>
-      	</div>
-      	
-      	<div class="panel-body">
-      		<% project.get_members.each do |member| %>
-      		  <%= member.name %>
-      		<% end %>
-      	</div>
-      </div>
-    </div>
-  <% end %>
+  <div class="row">
+    <table class="table table-striped h4">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Project Name</th>
+          <th>Members</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      
+      <% projects.each do |project| %>
+      <tbody>
+        <tr>
+          <th>
+            <%= project.id %>
+          </th>
+          <td>
+            <%= link_to project.name, project_path(project) %>
+          </td>
+          <td>
+            <% project.get_members.each do |member| %>
+        		  <%= member.name %>
+        		<% end %>
+          </td>
+          <td>
+            <%= render 'action', project: project %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
 <% end %>
+  
+

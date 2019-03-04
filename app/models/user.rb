@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def is_member?(project)
     self.projects.include?(project)
   end
+  
+  def get_work(project)
+    @work = Work.find_by(user_id: self.id, project_id: project.id)
+  end
 end
