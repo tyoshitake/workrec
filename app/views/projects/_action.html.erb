@@ -2,12 +2,12 @@
   <%= form_for(current_user.works.find_by(project_id: project.id), html: {method: :delete }) do |f| %>
     <%= hidden_field_tag :user_id, current_user.id %>
     <%= hidden_field_tag :project_id, project.id %>
-    <%= f.submit 'Leave', class: 'btn btn-default btn-danger' %>
+    <%= f.submit 'Leave this project', class: 'btn btn-default btn-danger  btn-block' %>
   <% end %>
 <% else %>
-  <%= form_for(Work.new, html: {method: :post }) do |f| %>
-    <%= hidden_field_tag :user_id, current_user.id %>
-    <%= hidden_field_tag :project_id, project.id %>
-    <%= f.submit 'Leave', class: 'btn btn-default btn-danger' %>
+  <%= form_for(@work, html: {method: :post }) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :project_id, value: project.id %>
+    <%= f.submit 'Join this project', class: 'btn btn-default btn-primary btn-block' %>
   <% end %>
 <% end %>

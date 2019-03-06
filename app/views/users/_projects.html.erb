@@ -1,13 +1,28 @@
-<% works.each do |work| %>
-  <div class="panel panel-default">
-  <div class="panel-heading">
-    <%= link_to work.project.name, project_path(work.project), class: "h4" %>
-  </div>
-  <div class="panel-body">
-    <%= form_for(work, html: {method: :delete }) do |f| %>
-      <%= hidden_field_tag :user_id, work.user_id %>
-      <%= hidden_field_tag :project_id, work.project_id %>
-      <%= f.submit 'Leave', class: 'btn btn-danger' %>
-    <% end %>
+<h2>プロジェクト一覧</h2>
+<% if projects.any? %>
+  <div class="row">
+    <table class="table table-striped h4">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Project Name</th>
+        </tr>
+      </thead>
+      
+      <% projects.each do |project| %>
+      <tbody>
+        <tr>
+          <th>
+            <%= project.id %>
+          </th>
+          <td>
+            <%= link_to project.name, project_path(project) %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
   </div>
 <% end %>
+  
+

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @works = @user.works
+    @projects = @user.projects
   end
 
   def create

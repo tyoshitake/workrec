@@ -5,8 +5,16 @@
   <aside class="col-xs-4">
     <h3>メンバー一覧</h3>
     
-    <%= render 'member', members: @members %>
+    <div>
+      <%= render 'member', members: @members %>  
+    </div>
+    <div>
+      <%= render 'action', project: @project, work: @work %>  
+    </div>
+    
   </aside>
   <div class="col-xs-8">
   </div>
 </div>
+
+

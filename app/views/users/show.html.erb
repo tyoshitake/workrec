@@ -2,9 +2,8 @@
   <h1><%= @user.name%> さんのページ</h1>
 </div>
 <div class="row">
-  <h2>プロジェクト一覧</h2>
   <aside class="col-xs-4">
-    <%= render 'projects', works: @works %>
+    <%= render 'projects', projects: @projects %>
   </aside>
   <div class="col-xs-8">
   </div>

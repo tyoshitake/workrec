@@ -7,7 +7,6 @@
           <th>#</th>
           <th>Project Name</th>
           <th>Members</th>
-          <th>Action</th>
         </tr>
       </thead>
       
@@ -24,9 +23,6 @@
             <% project.get_members.each do |member| %>
         		  <%= member.name %>
         		<% end %>
-          </td>
-          <td>
-            <%= render 'action', project: project %>
           </td>
         </tr>
       </tbody>
