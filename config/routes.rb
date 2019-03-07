@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :new, :create]
   resources :works, only: [:create, :destroy]
-  resources :projects, only: [:show, :index, :destroy, :new]
+  resources :projects, only: [:show, :index, :destroy, :new, :create]
 end
