@@ -14,6 +14,10 @@ class User < ApplicationRecord
     self.projects.include?(project)
   end
   
+  def is_founder?(project)
+    project.founder == self
+  end
+  
   def get_work(project)
     @work = Work.find_by(user_id: self.id, project_id: project.id)
   end

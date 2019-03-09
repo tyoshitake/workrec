@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(name: project_params[:name], founder: current_user)
     if @project.save
       @work = Work.new(user: current_user, project: @project)
       if @work.save
@@ -30,6 +30,13 @@ class ProjectsController < ApplicationController
       flash.now[:danger] = '新しいプロジェクトの作成に失敗しました。'
       render :new
     end
+  end
+  
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    flash[:success] = 'プロジェクトを削除しました。'
+    redirect_to current_user
   end
   
   private

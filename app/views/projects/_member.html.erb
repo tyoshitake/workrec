@@ -8,7 +8,7 @@
   <tbody>
     <% @members.each_with_index do |member, index| %>
       <tr>
-        <th><%= index %></th>
+        <th><%= index + 1 %></th>
         <th><%= member.name %></th>
       </tr>
     <% end %>
