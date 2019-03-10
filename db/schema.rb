@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190309125944) do
+ActiveRecord::Schema.define(version: 20190310130937) do
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -28,17 +28,6 @@ ActiveRecord::Schema.define(version: 20190309125944) do
     t.datetime "updated_at",      null: false
   end
 
-  create_table "workingtimes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.integer  "workingtime_m"
-    t.datetime "date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["project_id"], name: "index_workingtimes_on_project_id", using: :btree
-    t.index ["user_id"], name: "index_workingtimes_on_user_id", using: :btree
-  end
-
   create_table "works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "project_id"
@@ -49,7 +38,18 @@ ActiveRecord::Schema.define(version: 20190309125944) do
     t.index ["user_id"], name: "index_works_on_user_id", using: :btree
   end
 
+  create_table "worktimes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "work_id"
+    t.integer  "time_m"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_id", "date"], name: "index_worktimes_on_work_id_and_date", unique: true, using: :btree
+    t.index ["work_id"], name: "index_worktimes_on_work_id", using: :btree
+  end
+
   add_foreign_key "projects", "users", column: "founder_id"
   add_foreign_key "works", "projects"
   add_foreign_key "works", "users"
+  add_foreign_key "worktimes", "works"
 end
